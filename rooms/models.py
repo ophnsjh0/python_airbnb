@@ -13,6 +13,10 @@ class Room(CommonModel):
         PRIVATE_ROOM = ("private_room", "Private Room")
         SHARED_ROOM = ("shared_room", "Shared Room")
 
+    name = models.CharField(
+        max_length=150,
+        default="",
+    )
     country = models.CharField(
         max_length=50,
         default="한국",
@@ -43,6 +47,9 @@ class Room(CommonModel):
         "rooms.Amenity",
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Amenity(CommonModel):
 
@@ -54,4 +61,13 @@ class Amenity(CommonModel):
     description = models.CharField(
         max_length=150,
         null=True,
+        blank=True,
     )
+
+    def __str__(self):
+        return self.name
+
+    """ admin 필드 이름 변경 """
+
+    class Meta:
+        verbose_name_plural = "Amenities"

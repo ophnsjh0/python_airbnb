@@ -11,6 +11,7 @@ class CommonModel(models.Model):
     update_at = models.DateTimeField(
         auto_now=True,
     )
+    """ database 저장 안하게 설정 """
 
     class Meta:
         abstract = True
